@@ -33,7 +33,7 @@ A complete example showing how the P4A WebHapticModule can be used to add a 3D s
 More specifically, you need to:
 
 a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
-'''json
+'''javascript
 {
 	"backgoundImage" : "./sampleBackground/background.jpg",	
 	"backgroundColor" : {
