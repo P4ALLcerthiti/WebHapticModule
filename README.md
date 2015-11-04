@@ -47,7 +47,7 @@ One common problem that you may encounter concerns an exception saying "JAR reso
 You need to create your own certificate using the [keytool](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) command interface 
 - e.g. keytool -genkey -alias YOUR_KEY -keystore YOUR_KEYSTORE_FILENAME
 
-and then to sign all the .jar files (the [P4AllHapticModuleApplet.jar](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/P4AllHapticModuleApplet.jar) and all the [dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/lib)).
+and then to sign all the .jar files (the [P4AllHapticModuleApplet.jar](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/P4AllHapticModuleApplet.jar) and all the [dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/lib)) using the [jarsigner](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html) tool.
 - e.g. jarsigner -keystore YOUR_KEYSTORE_FILENAME -storepass YOUR_STORE_PASS -keypass YOUR_KEY_PASS JAR_FILENAME_TO_SIGN.jar YOUR_KEY
 
 ### Funding Acknowledgement
