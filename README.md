@@ -3,6 +3,9 @@ P4A - WebHapticModule
 
 A module that enables adding haptic feedback in web applications. A video presentation can be found here: [https://www.youtube.com/watch?v=pFxUimFy8Mk](https://www.youtube.com/watch?v=pFxUimFy8Mk)
 
+The image below presents the architecture overview of the P4A WebHapticModule.
+![P4A WebHapticModule - Architecture overview](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4A_WebHapticModule_Architecture.png "P4A WebHapticModule - Architecture overview")
+
 The source code contains three main directories:
 
 1) [NativePhantomManager](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/NativePhantomManager): This includes the source code that generates the [NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll)
