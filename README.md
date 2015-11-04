@@ -94,7 +94,7 @@ c) Add an [APPLET tag](https://github.com/P4ALLcerthiti/WebHapticModule/blob/mas
 
 ### Troubleshooting
 #### Possible problem:
-One common problem that you may encounter concerns an exception saying "JAR resources in JNLP file are not signed by the same certificate".
+One common problem that you may encounter concerns an exception saying *"JAR resources in JNLP file are not signed by the same certificate"*.
 
 ####Solution:
 You need to create your own certificate using the [keytool](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) command interface 
