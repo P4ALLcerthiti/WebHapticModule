@@ -72,16 +72,16 @@ a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/ma
 	}
 
 More specifically, the description of the scene is achieved through the following attributes:
-•	backgoundImageFilepath: the filepath of  the image that will be used as background of the 3D scene.
-•	backgroundColor: if a specific color is preferred as background instead of an image, the corresponding RGB values of the color can be defined using this attribute.
-•	pointerSize: this attribute defines the size of the 3D cursor.
-•	pointerColor: the RGB values of the preferred color of the 3D cursor.
+- backgoundImageFilepath: the filepath of  the image that will be used as background of the 3D scene.
+- backgroundColor: if a specific color is preferred as background instead of an image, the corresponding RGB values of the color can be defined using this attribute.
+- pointerSize: this attribute defines the size of the 3D cursor.
+- pointerColor: the RGB values of the preferred color of the 3D cursor.
 and for each 3D object the following attributes have to be defined:
-•	filepath: the filepath of the .obj file.
-•	scaleFactor: the scale factor of the haptic model. When adding a new 3D object in the scene, the developer may need to manually adjust this value if inconsistencies between the visual and haptic rendering occur. More specifically, when the haptic model is smaller or greater than the visual 3D model (the cursor penetrates into the object or “touches the air”, correspondingly), the developer can adjust this value to solve the aforementioned problem.  
-•	positionX, positionY, positionZ: the position of the 3D object inside the scene in X, Y and Z axis, correspondingly.
-•	stiffness: the stiffness level of the object in N/m. 
-•	friction: the value of this attribute corresponds to the static and dynamic friction for the 3D object.
+- filepath: the filepath of the .obj file.
+- scaleFactor: the scale factor of the haptic model. When adding a new 3D object in the scene, the developer may need to manually adjust this value if inconsistencies between the visual and haptic rendering occur. More specifically, when the haptic model is smaller or greater than the visual 3D model (the cursor penetrates into the object or “touches the air”, correspondingly), the developer can adjust this value to solve the aforementioned problem.  
+- positionX, positionY, positionZ: the position of the 3D object inside the scene in X, Y and Z axis, correspondingly.
+- stiffness: the stiffness level of the object in N/m. 
+- friction: the value of this attribute corresponds to the static and dynamic friction for the 3D object.
 
 b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp) describing:
 - the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L17) to be loaded,
