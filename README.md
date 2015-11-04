@@ -29,8 +29,8 @@ The second step includes the compiling/building of "P4AllHapticModuleApplet", wh
 A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application can be found [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp).
 
 More specifically, you need to:
-a) Create a JSON file like [this one](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
-b) 
+a) Create a JSON file like [this](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
+b) Create a .jnlp file like [this](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp) describing the location of the ["P4AllHapticModuleApplet"](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L17) to be loaded, the location of the [various dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L19-L22), as well as the location of the [JSON file describing the 3D scene](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L24) to be loaded.
 
 ### Troubleshooting
 jar signing...
