@@ -7,7 +7,7 @@ The source code contains three main directories:
 
 1) [NativePhantomManager](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/NativePhantomManager): This includes the source code that generates the [NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll)
 
-2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/SampleConfig/config.json)
+2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/config.json)
 
 3) [TestApp](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp): A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application.
 
@@ -23,7 +23,9 @@ You also have the option to skip this step by using directly the already built "
 Manual build of "NativePhantomManager.dll" will be actually needed only in cases where you want to modify/extend the functionalities already provided.
 
 ### Step 2: Build "P4AllHapticModuleApplet"
-The second step includes the compiling/building of "P4AllHapticModuleApplet", which is the configurable Java Applet that will be finally added in the targeted web page. In order to build "P4AllHapticModuleApplet" you may use any Java IDE. However, if you decide to use [NetBeans](https://netbeans.org/), a pre-configured environment is already provided [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet/nbproject). 
+The second step includes the compiling/building of [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet), which is the configurable Java Applet that will be finally added in the preferred page/application. In order to build "P4AllHapticModuleApplet" you may use any Java IDE. However, if you decide to use [NetBeans](https://netbeans.org/), a pre-configured environment is already provided [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet/nbproject). 
+
+In case you decided to build by yourself the "NativePhantomManager.dll", as described in Step 1, you will need to replace [the existing NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll) with the newly generated .dll and then "clean & build" the [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet).
 
 ### Step 3: Adding a 3D scene with haptic feedback in a preferred web page/application
 A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application can be found [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp).
@@ -31,6 +33,57 @@ A complete example showing how the P4A WebHapticModule can be used to add a 3D s
 More specifically, you need to:
 
 a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
+
+	{
+		"backgoundImage" : "./sampleBackground/background.jpg",	
+		"backgroundColor" : {
+			"R": 0.05,
+			"G": 0.05,
+			"B": 0.5
+		},
+		"pointerSize" : 0.03,
+		"pointerColor" : {
+			"R": 1.0,
+			"G": 0.0,
+			"B": 0.0
+		},
+		"allSceneObjects" : [
+			{
+				"filename" : "./sampleModels/Object1.obj",
+				"scaleFactor" : 0.25,
+				"positionX" : 1.0,
+				"positionY" : -0.3,
+				"positionZ" : 0.0,
+				"stiffness" : 0.99,
+				"friction" : 0.34,
+				"cameraFocus" : false
+			},
+			{
+				"filename" : "./sampleModels/Object2.obj",
+				"scaleFactor" : 0.7,
+				"positionX" : -0.5,
+				"positionY" : 0.2,
+				"positionZ" : -0.3,
+				"stiffness" : 0.99,
+				"friction" : 0.74,
+				"cameraFocus" : true
+			}
+		]
+	}
+
+More specifically, the description of the scene is achieved through the following attributes:
+- *backgoundImage*: the filepath of  the image that will be used as background of the 3D scene.
+- *backgroundColor*: if a specific color is preferred as background instead of an image, the corresponding RGB values of the color can be defined using this attribute.
+- *pointerSize*: this attribute defines the size of the 3D cursor.
+- *pointerColor*: the RGB values of the preferred color of the 3D cursor.
+
+and for each 3D object the following attributes have to be defined:
+- *filename*: the filepath of the .obj file.
+- *scaleFactor*: the scale factor of the haptic model. When adding a new 3D object in the scene, the developer may need to manually adjust this value if inconsistencies between the visual and haptic rendering occur. More specifically, when the haptic model is smaller or greater than the visual 3D model (the cursor penetrates into the object or “touches the air”, correspondingly), the developer can adjust this value to solve the aforementioned problem.  
+- *positionX, positionY, positionZ*: the position of the 3D object inside the scene in X, Y and Z axis, correspondingly.
+- *stiffness*: the stiffness level of the object in N/m. 
+- *friction*: the value of this attribute corresponds to the static and dynamic friction for the 3D object.
+- *cameraFocus*: when this attribute is *true*, the camera focuses on this object. 
 
 b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp) describing:
 - the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L17) to be loaded,
