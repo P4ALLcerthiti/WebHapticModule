@@ -33,44 +33,43 @@ A complete example showing how the P4A WebHapticModule can be used to add a 3D s
 More specifically, you need to:
 
 a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
-'''javascript
-{
-	"backgoundImage" : "./sampleBackground/background.jpg",	
-	"backgroundColor" : {
-		"R": 0.05,
-		"G": 0.05,
-		"B": 0.5
-	},
-	"pointerSize" : 0.03,
-	"pointerColor" : {
-		"R": 1.0,
-		"G": 0.0,
-		"B": 0.0
-	},
-	"allSceneObjects" : [
-		{
-			"filename" : "./sampleModels/Object1.obj",
-			"scaleFactor" : 0.25,
-			"positionX" : 1.0,
-			"positionY" : -0.3,
-			"positionZ" : 0.0,
-			"stiffness" : 0.99,
-			"friction" : 0.34,
-			"cameraFocus" : false
+
+	{
+		"backgoundImage" : "./sampleBackground/background.jpg",	
+		"backgroundColor" : {
+			"R": 0.05,
+			"G": 0.05,
+			"B": 0.5
 		},
-		{
-			"filename" : "./sampleModels/Object2.obj",
-			"scaleFactor" : 0.7,
-			"positionX" : -0.5,
-			"positionY" : 0.2,
-			"positionZ" : -0.3,
-			"stiffness" : 0.99,
-			"friction" : 0.74,
-			"cameraFocus" : true
-		}
-	]
-}
-...
+		"pointerSize" : 0.03,
+		"pointerColor" : {
+			"R": 1.0,
+			"G": 0.0,
+			"B": 0.0
+		},
+		"allSceneObjects" : [
+			{
+				"filename" : "./sampleModels/Object1.obj",
+				"scaleFactor" : 0.25,
+				"positionX" : 1.0,
+				"positionY" : -0.3,
+				"positionZ" : 0.0,
+				"stiffness" : 0.99,
+				"friction" : 0.34,
+				"cameraFocus" : false
+			},
+			{
+				"filename" : "./sampleModels/Object2.obj",
+				"scaleFactor" : 0.7,
+				"positionX" : -0.5,
+				"positionY" : 0.2,
+				"positionZ" : -0.3,
+				"stiffness" : 0.99,
+				"friction" : 0.74,
+				"cameraFocus" : true
+			}
+		]
+	}
 
 b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp) describing:
 - the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L17) to be loaded,
