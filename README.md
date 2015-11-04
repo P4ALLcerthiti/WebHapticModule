@@ -15,6 +15,14 @@ The source code contains three main directories:
 
 In order to add haptic feedback to a web application using the P4A WebHapticModule, you may follow the following steps:
 
+## Step 1: Build "NativePhantomManager.dll"
+The first step is optional and includes the manual compiling/building of the "NativePhantomManager.dll", which is used by the targeted Java Applet and enables haptic interaction with the 3D objects displayed in the Applet using a variety of haptic devices. This .dll is based on the [Java Native Interface (JNI))](http://docs.oracle.com/javase/7/docs/technotes/guides/jni/) framework, which enables execution of functions of [CHAI 3D](http://www.chai3d.org/) (written in C++) inside a Java application.
+
+You also have the option to skip this step by using directly the already built "NativePhantomManager.dll", which can be found [here](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll).
+
+Manual build of "NativePhantomManager.dll" will be actually used only in cases where you want to modify/extend the functionalities already provided.
+
+## Step 2:
 
 
 ### Funding Acknowledgement
