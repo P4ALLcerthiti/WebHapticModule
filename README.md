@@ -71,7 +71,7 @@ a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/ma
 		]
 	}
 
-More specifically, the description of the scene is achieved through the following attributes:
+In particular, the description of the scene is achieved through the following attributes:
 - *backgoundImage*: the filepath of  the image that will be used as background of the 3D scene.
 - *backgroundColor*: if a specific color is preferred as background instead of an image, the corresponding RGB values of the color can be defined using this attribute.
 - *pointerSize*: this attribute defines the size of the 3D cursor.
