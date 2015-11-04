@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>P4All - Haptic I/O Module</title>
+        <vendor>CERTH-ITI</vendor>
+        <homepage href=""/>
+        <description>This is the Haptic I/O Module developed by CERTH-ITI in the context of the Prosperity4All project.</description>
+        <description kind="short">P4All - Haptic I/O Module</description>
+    </information>
+	
+	<security>
+		<all-permissions/>
+	</security>
+    
+	<resources>
+		<j2se version="1.5+"/>
+		<jar eager="true" href="./P4AllHapticModuleApplet.jar" main="true"/>
+		
+		<jar href="./lib/j3dcore.jar"/>
+		<jar href="./lib/j3dutils.jar"/>
+		<jar href="./lib/vecmath.jar"/>
+		<jar href="./lib/gson-2.3.1.jar"/>
+
+		<property name="jnlp.descriptionOfObjectsToShow" value="./config.json" />
+	</resources>
+    
+	<applet-desc height="680" main-class="com.certh.iti.applet.P4AllHapticModuleApplet" name="P4All - Haptic I/O Module" width="750">
+	</applet-desc>
+</jnlp>
