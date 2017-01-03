@@ -10,7 +10,7 @@ The source code contains three main directories:
 
 1) [NativePhantomManager](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/NativePhantomManager): This includes the source code that generates the [NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll)
 
-2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/config.json)
+2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/config.json)
 
 3) [TestApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApplet): A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application.
 
