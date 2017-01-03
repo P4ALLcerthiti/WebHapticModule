@@ -1,6 +1,4 @@
 ﻿#pragma once
-//#include "Ogre.h"
-//#include "CEGUI.h"
 
 #include <assert.h>
 #include <math.h>
@@ -11,7 +9,6 @@
 //CHAI 3D v.2.0.0
 #include "extras/CGlobals.h"
 #include "GL/glut.h"
-//#include "gl.h"
 #include "chai3d.h"
 //-CHAI 3D
 
@@ -21,7 +18,6 @@ class phantomModel
 public:
 	cMesh* model; //needed
 	std::string name;
-	//Ogre::Vector3 pos;
 	std::string pos;
 	bool isPartOfTheScene;
 
@@ -48,7 +44,6 @@ public:
 
 	double HAPTICDEVICE_FORCE_DURING_INITIALIZATION;
 
-	//Ogre::String mapLocalFilename;
 	float mapScalingFactor;
 
 //--CHAI 3D---------------
@@ -76,17 +71,6 @@ public:
 
 	bool runWithPhantomSupport;
 	
-	//Ogre::Vector3 INIT_CHAI_LEFT_UP_BORDER;
-	//Ogre::Vector3 INIT_CHAI_RIGHT_UP_BORDER;
-
-	//Ogre::Vector3 CHAI_LEFT_UP_BORDER;
-	//Ogre::Vector3 CHAI_RIGHT_UP_BORDER;
-	//Ogre::Vector3 CHAI_RIGHT_DOWN_BORDER;
-	//Ogre::Vector3 CHAI_LEFT_DOWN_BORDER;
-
-	//Ogre::Vector3 MAX_CHAI_LEFT_UP_BORDER;	//when hapgets have the maximum size
-	//Ogre::Vector3 MAX_CHAI_RIGHT_UP_BORDER;
-
 	bool PhantomIsCurrentlySupported;
 	bool startHaptics;
 	bool updatePhantom;
@@ -104,13 +88,8 @@ public:
 	float testObjectScaleFactorY;
 	float testObjectScaleFactorZ;
 
-	//Ogre::Timer resumeCollisionTimer;
 	std::vector <phantomModel> phantomModels;
-	//Ogre::Vector3 phantomCurCHAIPos;
 	std::string curCollisionObjName;
-	//Ogre::String curCollisionObjName;
-	//Ogre::Timer movingTimer;
-	//Ogre::Timer goToPreviousURLTimer;
 	bool earconPlayed;
 
 	bool startInitializationOfPhantomPosition_center;
@@ -143,15 +122,11 @@ public:
 	std::string increaseModelSize(std::string objFilename);
 	std::string decreaseModelSize(std::string objFilename);
 	std::string getObjNameInCollisionWithPhantom();
-	//Ogre::Vector3 getNormalizedModelPos(Ogre::Vector3 absolutePos);
 	int disableCollisionWithAllComponents();
 	int enableCollisionWithAllComponents();
 	int getIndexByName(std::string name);
 	int getIndexByCMesh(cMesh* tmpModel);
-	//bool chaiModelExists(Ogre::String tmpName);
 	int clearModels();
-	//void removeModel(Ogre::String name);	
-	//void test_move(Ogre::String objName, Ogre::String where);
 	std::string ftoa(const double& x);
 	std::string moveMapLeft();
 	std::string moveMapRight();
@@ -159,7 +134,6 @@ public:
 	std::string moveMapDown();
 	std::string moveMapForward();
 	std::string moveMapBack();
-	//void debug_logChaiAndOgreCursorPosition();
 	std::string testRotMatrix();
 	int resetPhantomPosition(double fromZ, double toZ);
 	void initPhantomPosition(cVector3d curPhantomPos);
