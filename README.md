@@ -10,9 +10,11 @@ The source code contains three main directories:
 
 1) [NativePhantomManager](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/NativePhantomManager): This includes the source code that generates the [NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll)
 
-2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/config.json)
+2) [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet): This includes the source code of the applet that can be used to add a 3D scene with haptic feedback in a web application. The 3D scene to be added can be defined in [config.json ](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/config.json)
 
-3) [TestApp](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp): A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application.
+3) [TestApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApplet): A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application.
+
+4) [TestJavaSwingApp](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestJavaSwingApp): A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a Java Swing application.
 
 ## Usage instructions
 
@@ -31,11 +33,11 @@ The second step includes the compiling/building of [P4AllHapticModuleApplet](htt
 In case you decided to build by yourself the "NativePhantomManager.dll", as described in Step 1, you will need to replace [the existing NativePhantomManager.dll](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/P4AllHapticModuleApplet/src/com/certh/iti/haptics/NativePhantomManager.dll) with the newly generated .dll and then "clean & build" the [P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet).
 
 ### Step 3: Adding a 3D scene with haptic feedback in a preferred web page/application
-A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application can be found [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp).
+A complete example showing how the P4A WebHapticModule can be used to add a 3D scene with haptic feedback in a preferred web page/application can be found [here](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApplet).
 
 More specifically, you need to:
 
-a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/config.json) describing the 3D scene to be added.
+a) Create a [JSON file](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApplet/config.json) describing the 3D scene to be added.
 
 	{
 		"backgoundImage" : "./sampleBackground/background.jpg",	
@@ -88,12 +90,12 @@ and for each 3D object the following attributes have to be defined:
 - *friction*: the value of this attribute corresponds to the static and dynamic friction for the 3D object.
 - *cameraFocus*: when this attribute is *true*, the camera focuses on this object. 
 
-b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp) describing:
-- the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L17) to be loaded,
-- the [location of the various dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L19-L22), 
-- as well as the [location of the JSON file describing the 3D scene](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.jnlp#L24) to be loaded.
+b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp) describing:
+- the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L17) to be loaded,
+- the [location of the various dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L19-L22), 
+- as well as the [location of the JSON file describing the 3D scene](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L24) to be loaded.
 
-c) Add an [APPLET tag](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/launch.html#L9-L15) in the HTML code of your web page/application where you prefer to add the corresponding 3D scene.
+c) Add an [APPLET tag](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.html#L9-L15) in the HTML code of your web page/application where you prefer to add the corresponding 3D scene.
 
 ### Troubleshooting
 #### Possible problem:
@@ -103,7 +105,7 @@ One common problem that you may encounter concerns an exception saying *"JAR res
 You need to create your own certificate using the [keytool](https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html) command interface 
 - e.g. keytool -genkey -alias YOUR_KEY -keystore YOUR_KEYSTORE_FILENAME
 
-and then to sign all the .jar files (the [P4AllHapticModuleApplet.jar](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApp/P4AllHapticModuleApplet.jar) and all the [dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/TestApp/lib)) using the [jarsigner](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html) tool.
+and then to sign all the .jar files (the [P4AllHapticModuleApplet.jar](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/P4AllHapticModuleApplet.jar) and all the [dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/tree/master/P4AllHapticModuleApplet/lib)) using the [jarsigner](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/jarsigner.html) tool.
 - e.g. jarsigner -keystore YOUR_KEYSTORE_FILENAME -storepass YOUR_STORE_PASS -keypass YOUR_KEY_PASS JAR_FILENAME_TO_SIGN.jar YOUR_KEY
 
 ### Funding Acknowledgement

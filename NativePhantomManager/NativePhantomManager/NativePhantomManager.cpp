@@ -9,7 +9,7 @@
 #endif
 
 
-
+// The one and only application object
 
 CWinApp theApp;
 
