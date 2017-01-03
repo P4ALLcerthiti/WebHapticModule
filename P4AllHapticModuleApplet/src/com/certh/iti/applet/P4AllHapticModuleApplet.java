@@ -74,7 +74,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
     public Scene my3DScene;
     public Transform3D t3d;
     public TransformGroup objTrans;
-    public static Vector3f myScenePosition;
+    public static Vector3f myScenePosition;// = new Vector3f(-0.2f, -0.68f, -0.3f);
     
     MyScene myScene;
     //objects to add
@@ -82,11 +82,16 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
     public ArrayList<ObjectFile> my3DObjects;
     public ArrayList<Shape3D> myShapes3D;
     public ArrayList<Vector3f> my3dObjectsPosition;
-    public static ArrayList<String> objNames;
-    public static ArrayList<Double> chai3dObjScaleFactors;
+    public static ArrayList<String> objNames;// = "sphere.obj";
+    public static ArrayList<Double> chai3dObjScaleFactors;// = 0.7; 
     //-objects to add
     
     public double SCALE_FACTOR = 0.62;
+    //cube_small.obj        scale: 1.0
+    //sphere.obj            scale: 0.92
+    //single_airboat        scale: 0.98
+    //teapot
+    
 
     /*
      * init: This method is intended for whatever initialization is needed for your applet. 
@@ -103,12 +108,14 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
         chai3dObjScaleFactors = new ArrayList<Double>();
         
         //load objects from config file
+        System.out.println("HOME DIR: " + System.getProperty("user.home"));
         try
         {
             myScene = UtilsManager.getInstance().readObjectsFromFile(System.getProperty("jnlp.descriptionOfObjectsToShow"));
             for(int i=0; i<myScene.allSceneObjects.size(); i++)
             {
                 MyObject tmpObject = myScene.allSceneObjects.get(i);
+                //System.out.println(tmpObject.toString());
                 objNames.add(tmpObject.filename);
                 chai3dObjScaleFactors.add(tmpObject.scaleFactor);
                 
@@ -129,7 +136,10 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
         for(int i=0; i<objNames.size(); i++)
         {
             try {
+                //URL path = getCodeBase();
+                //objFilenames.add(new URL(path.toString() + "sampleModels/" + objNames.get(i)));
                 objFilenames.add(new URL("file:/" + objNames.get(i)));
+                System.out.println("filename (" + Integer.toString(i) + ") : " + objFilenames.get(i));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 System.err.println(e);
@@ -205,6 +215,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
 
         // Create a ball to demonstrate 3D cursor
         my3dCursor = new Sphere(myScene.pointerSize, Sphere.GENERATE_NORMALS, createAppearance());
+        //objRoot.addChild(my3dCursor);  
         my3DCursorTransform = new Transform3D();
         my3DCursorTransformGroup = new TransformGroup();
         my3DCursorTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
@@ -278,8 +289,14 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
             }
 
             Iterator entrySet_it = entrySet.iterator();
+            System.out.println("Hashtable entries:");
             int counter = 0;
 
+            /*while (entrySet_it.hasNext()) {
+                Object myObject = entrySet_it.next();
+                System.out.println(Integer.toString(counter) + ") " + myObject);
+                counter++;
+            }*/
             myShapes3D.add(nameMap.get(firstKey));
 
             //SET SCENE POSITION
@@ -291,15 +308,25 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 my3dObjectsPosition.add(new Vector3f(myScene.allSceneObjects.get(i).positionX, myScene.allSceneObjects.get(i).positionY, myScene.allSceneObjects.get(i).positionZ));
                 myShapes3D.get(i).getLocalToVworld(my3dObjTransform);
                 my3dObjTransform.get(my3dObjectsPosition.get(i));
+                System.out.println("my Obj pos : (" + Float.toString(my3dObjectsPosition.get(i).x)
+                        + ", " + Float.toString(my3dObjectsPosition.get(i).y)
+                        + ", " + Float.toString(my3dObjectsPosition.get(i).z) + ")");
+                
+                
+                //my3DCursorPosition = new Vector3f(curCursorPos[1], curCursorPos[2], curCursorPos[0]);
+                //my3DCursorTransform.setTranslation(my3DCursorPosition);
+                //my3DCursorTransformGroup.setTransform(my3DCursorTransform);
                 
                 my3dObjTransform.setTranslation(new Vector3f(myScene.allSceneObjects.get(i).positionX, myScene.allSceneObjects.get(i).positionY, myScene.allSceneObjects.get(i).positionZ));
                 
             }
             else
             {
-                System.out.println("myShape3D is NULL! firstKey: " + firstKey);
+                System.out.println("myShape3D is NULL! gia firstKey: " + firstKey);
             }
 
+
+            //Shape3D wing = nameMap.get("wing");
 
             bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
 
@@ -352,6 +379,10 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
         // make modifications to default material properties
         appear.setMaterial(material);
 
+        //      ColoringAttributes colorAtt = new ColoringAttributes();
+        //      colorAtt.setShadeModel(ColoringAttributes.SHADE_FLAT);
+        //      appear.setColoringAttributes(colorAtt);
+
         return appear;
     }
 
@@ -362,6 +393,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
     @Override
     public void start() {
         hapticsThread = new Thread(this);
+        //hapticsThread.setPriority(9);
 
         hapticsThreadRunning = false;
         hapticsThread.start();
@@ -374,6 +406,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
      */
     @Override
     public void stop() {
+        //mainThread = null;
         hapticsThread = null;
 
         if (EventHandlersManager.getInstance().hapticDeviceFound) {
@@ -403,6 +436,8 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 {
                     float[] curCursorPos = {(float) 0.0, (float) 0.0, (float) 0.0};
                     curCursorPos = NativePhantomManager.Update();
+                    //System.out.println("CHAID cursor pos: (" + Float.toString(curCursorPos[0]) + 
+                    //        ", " + Float.toString(curCursorPos[1]) + ", " + Float.toString(curCursorPos[2]) + ")");
 
                     my3DCursorPosition = new Vector3f(curCursorPos[1], curCursorPos[2], curCursorPos[0]);
                     my3DCursorTransform.setTranslation(my3DCursorPosition);
@@ -410,6 +445,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 }
             } else {
                 try {
+                    //System.out.println("hapticsThread will sleep for 1 sec");
                     hapticsThread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
@@ -449,7 +485,8 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                     /*   x      y     */
                     /*   y      z     */
                     /*   z      x     */
-                    /******************/                    
+                    /******************/
+                    System.out.println("paw na valw chai model se (" + Float.toString(my3dObjectsPosition.get(i).x) + ", " + Float.toString(my3dObjectsPosition.get(i).y) + ", " + Float.toString(my3dObjectsPosition.get(i).z) + ")");
                     NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
                 }
             }
@@ -467,8 +504,14 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
 
         int tmpKeyCode = e.getKeyCode();
         char tmpKeyChar = e.getKeyChar();
+        //System.out.println("..." + Integer.toString(tmpKeyCode));
+        //System.out.println("..." + tmpKeyChar + "\n");
 
-        if (tmpKeyCode == 74) //J (move left)
+        //if(tmpKeyCode == KeyEvent.VK_EQUALS) //+ (zoom in)
+
+        //if(tmpKeyCode == 37) //left
+
+        if (tmpKeyCode == 74) //J (move map - left)
         {
             //move scene
             myScenePosition.x = myScenePosition.x - (float)0.05;
@@ -483,8 +526,9 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 my3dObjTransform.get(my3dObjectsPosition.get(i));
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
+                System.out.println("paw aristera to " + objNames.get(i));
             }
-        } else if (tmpKeyCode == 76) //L (move right)
+        } else if (tmpKeyCode == 76) //L (move map - right)
         {
             //move scene
             myScenePosition.x = myScenePosition.x + (float)0.05;
@@ -500,7 +544,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 73) //I (move up)
+        } else if (tmpKeyCode == 73) //I (move map - up)
         {
             //move scene
             myScenePosition.y = myScenePosition.y + (float)0.05;
@@ -516,7 +560,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 75) //K (move down)
+        } else if (tmpKeyCode == 75) //K (move map - down)
         {
             //move scene
             myScenePosition.y = myScenePosition.y - (float)0.05;
@@ -532,7 +576,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 65) //A (move back)
+        } else if (tmpKeyCode == 65) //A (move map - back)
         {
             //move scene
             myScenePosition.z = myScenePosition.z - (float)0.05;
@@ -548,7 +592,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 90) //Z (move front)
+        } else if (tmpKeyCode == 90) //Z (move map - front)
         {
             //move scene
             myScenePosition.z = myScenePosition.z + (float)0.05;
@@ -584,9 +628,13 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
         }        
         else if(tmpKeyCode == KeyEvent.VK_D) //D
         {
+            //String curScale = NativePhantomManager.decreaseModelSize(objNames);
+            //System.out.println("DECREASED SCALE -> " + curScale);
         }
         else if(tmpKeyCode == KeyEvent.VK_F) //F
         {
+            //String curScale = NativePhantomManager.increaseModelSize(objNames);
+            //System.out.println("INCREASED SCALE -> " + curScale);
         }
         
     }
@@ -598,8 +646,19 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
     /**
      * Initializes the applet P4AllHapticModuleApplet
      */
-
-	 /**
+//    public void init() {
+//        try {
+//            java.awt.EventQueue.invokeAndWait(new Runnable() {
+//
+//                public void run() {
+//                    initComponents();
+//                }
+//            });
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//    }
+    /**
      * This method is called from within the init() method to initialize the
      * form. WARNING: Do NOT modify this code. The content of this method is
      * always regenerated by the Form Editor.

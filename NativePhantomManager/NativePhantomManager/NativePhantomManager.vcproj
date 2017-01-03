@@ -130,7 +130,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\chai3d-2.0.0-win32\chai3d-2.0.0\src&quot;;&quot;..\..\chai3d-2.0.0-win32\chai3d-2.0.0\external\OpenGL\msvc&quot;"
+				AdditionalIncludeDirectories="&quot;F:\AEGIS_LOCAL_SVN_DESKTOP\chai3d-2.0.0-win32\chai3d-2.0.0\src&quot;;&quot;F:\AEGIS_LOCAL_SVN_DESKTOP\chai3d-2.0.0-win32\chai3d-2.0.0\external\OpenGL\msvc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;NATIVEPHANTOMMANAGER_EXPORTS;_MSVC"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -151,7 +151,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib opengl32.lib chai3d-release.lib glu32.lib odbc32.lib odbccp32.lib mfcs80u.lib MSVCRT.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;..\..\chai3d-2.0.0-win32\chai3d-2.0.0\lib\msvc8&quot;;&quot;..\..\chai3d-2.0.0-win32\chai3d-2.0.0\external\OpenGL\msvc&quot;;..\..\PortAudio\build\msvc\Win32\ReleaseMinDependency"
+				AdditionalLibraryDirectories="&quot;F:\AEGIS_LOCAL_SVN_DESKTOP\chai3d-2.0.0-win32\chai3d-2.0.0\lib\msvc8&quot;;&quot;F:\AEGIS_LOCAL_SVN_DESKTOP\chai3d-2.0.0-win32\chai3d-2.0.0\external\OpenGL\msvc&quot;;F:\AEGIS_applet_apo_local_SVN\PortAudio\build\msvc\Win32\ReleaseMinDependency"
 				IgnoreDefaultLibraryNames="mfcs80u.lib;MSVCRT.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
