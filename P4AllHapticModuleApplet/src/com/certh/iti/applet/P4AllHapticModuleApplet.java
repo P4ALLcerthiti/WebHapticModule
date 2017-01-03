@@ -90,7 +90,6 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
     //cube_small.obj        scale: 1.0
     //sphere.obj            scale: 0.92
     //single_airboat        scale: 0.98
-    //teapot
     
 
     /*
@@ -322,11 +321,9 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
             }
             else
             {
-                System.out.println("myShape3D is NULL! gia firstKey: " + firstKey);
+                System.out.println("myShape3D is NULL! firstKey: " + firstKey);
             }
 
-
-            //Shape3D wing = nameMap.get("wing");
 
             bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
 
@@ -511,7 +508,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
 
         //if(tmpKeyCode == 37) //left
 
-        if (tmpKeyCode == 74) //J (move map - left)
+        if (tmpKeyCode == 74) //J (move left)
         {
             //move scene
             myScenePosition.x = myScenePosition.x - (float)0.05;
@@ -528,7 +525,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
                 System.out.println("paw aristera to " + objNames.get(i));
             }
-        } else if (tmpKeyCode == 76) //L (move map - right)
+        } else if (tmpKeyCode == 76) //L (move right)
         {
             //move scene
             myScenePosition.x = myScenePosition.x + (float)0.05;
@@ -544,7 +541,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 73) //I (move map - up)
+        } else if (tmpKeyCode == 73) //I (move up)
         {
             //move scene
             myScenePosition.y = myScenePosition.y + (float)0.05;
@@ -560,7 +557,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 75) //K (move map - down)
+        } else if (tmpKeyCode == 75) //K (move down)
         {
             //move scene
             myScenePosition.y = myScenePosition.y - (float)0.05;
@@ -576,7 +573,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 65) //A (move map - back)
+        } else if (tmpKeyCode == 65) //A (move back)
         {
             //move scene
             myScenePosition.z = myScenePosition.z - (float)0.05;
@@ -592,7 +589,7 @@ public class P4AllHapticModuleApplet extends java.applet.Applet implements Runna
                 //move chai3D model
                 NativePhantomManager.moveModel(objNames.get(i), (double) my3dObjectsPosition.get(i).z, (double) my3dObjectsPosition.get(i).x, (double) my3dObjectsPosition.get(i).y);
             }
-        } else if (tmpKeyCode == 90) //Z (move map - front)
+        } else if (tmpKeyCode == 90) //Z (move front)
         {
             //move scene
             myScenePosition.z = myScenePosition.z + (float)0.05;

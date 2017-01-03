@@ -13,9 +13,6 @@
 
 JNIEXPORT jint JNICALL Java_com_certh_iti_haptics_NativePhantomManager_Initialize(JNIEnv *, jclass)
 {	
-	//int x;
-	//x=5;
-	//TRACE(_T("x:=%d"),x);
 	return PhantomManager::Instance().Init();
 }
 
@@ -35,20 +32,11 @@ JNIEXPORT jfloatArray JNICALL Java_com_certh_iti_haptics_NativePhantomManager_Up
 
 JNIEXPORT jint JNICALL Java_com_certh_iti_haptics_NativePhantomManager_LoadModel(JNIEnv *env, jclass, jstring objFilename, jdouble scaleFactor, jdouble stiffness, jdouble friction)
 {	
-	/*char cCurrentPath[FILENAME_MAX];
-	if (!_getcwd(cCurrentPath, sizeof(cCurrentPath)))
-		return errno;
-	CurrentPath[sizeof(cCurrentPath) - 1] = '/0'; // not really required 
-	TRACE(_T("curDir:=%s"),cCurrentPath);*/
-
-	//PhantomManager::Instance().LoadModel("C:/HapticRIAMapsWebApp/AEGIS_Dimos/NativeGUIApplet/testMap.obj", 
-	//PhantomManager::Instance().LoadModel("dist/testMap.obj", 
-	
 	const char *objFilenameString = env->GetStringUTFChars(objFilename, 0);
 	
 	PhantomManager::Instance().LoadModel(objFilenameString, 
 				objFilenameString, 
-				cVector3d(0, 0, 0),//gia map -> cVector3d(-0.186, -1.208, 1.219),
+				cVector3d(0, 0, 0),
 				0.0, 
 				90.0, 
 				90.0, 
@@ -158,10 +146,6 @@ JNIEXPORT jint JNICALL Java_com_certh_iti_haptics_NativePhantomManager_resetPhan
 JNIEXPORT jint JNICALL Java_com_certh_iti_haptics_NativePhantomManager_createObj
 (JNIEnv* env, jclass, jobjectArray vVertex, jint numVertex, jobjectArray vLink, jint numLink, jstring strFilename, jdouble dDitchWidth, jint numBuildings, jintArray vNumBuildingVertices, jobjectArray vIdxBuilding)
 {
-	//std::ofstream ofs("panostest.txt");
-	
-	//ofs << "TEST STO DIALA!!!!!!!!:\n";
-	//ofs.flush();
 	SimpleGraph* graph = new SimpleGraph();
 	double p[3] = {0,0,0};
 
@@ -192,43 +176,26 @@ JNIEXPORT jint JNICALL Java_com_certh_iti_haptics_NativePhantomManager_createObj
 
 	std::vector < std::vector<unsigned int> > vB;
 
-	//ofs << "TEST 1:\n";
-
 	iInt2 = env->GetIntArrayElements(vNumBuildingVertices,0);
 
 	for (int i=0; i<numBuildings; i++)
 	{
-		//ofs << "TEST 2:" << i << "\n";
-
 		std::vector <unsigned int> vBuild;
 		iArray = (jintArray)env->GetObjectArrayElement(vIdxBuilding, i);
 		iInt = env->GetIntArrayElements(iArray,0);
 
-		//ofs << iInt2[i] << "\t";
 		for (int j=0; j<iInt2[i]; j++)
 		{
-			//ofs << "TEST 3:" << j << "\n";
-			//ofs << iInt[j] << " ";
 			vBuild.push_back(iInt[j]);
 		}
-		//ofs << "\n";
-		//ofs << "TEST 4";
 		env->ReleaseIntArrayElements(iArray, iInt, 0);
-		//ofs << "TEST 5:" << i << "\n";
 		vB.push_back(vBuild);
 	}
 
-
-	//const jchar* charFilename = env->GetStringChars(strFilename, 0);
-
-	//graph->WriteToObj((char*)charFilename, dDitchWidth, dDitchHeight);
 	graph->WriteToObj("testMap.obj", dDitchWidth, vB);
 
 	//clearing
-	//env->ReleaseStringChars(strFilename, charFilename);
 	delete graph;
-
-	//ofs.close();
 
 	return 0;
 }
