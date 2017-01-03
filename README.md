@@ -91,9 +91,9 @@ and for each 3D object the following attributes have to be defined:
 - *cameraFocus*: when this attribute is *true*, the camera focuses on this object. 
 
 b) Create a [.jnlp file](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp) describing:
-- the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L17) to be loaded,
-- the [location of the various dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L19-L22), 
-- as well as the [location of the JSON file describing the 3D scene](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L24) to be loaded.
+- the [location of the P4AllHapticModuleApplet](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L5) to be loaded,
+- the [location of the various dependencies](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L20-L25), 
+- as well as the [location of the JSON file describing the 3D scene](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.jnlp#L27) to be loaded.
 
 c) Add an [APPLET tag](https://github.com/P4ALLcerthiti/WebHapticModule/blob/master/TestApplet/launch.html#L9-L15) in the HTML code of your web page/application where you prefer to add the corresponding 3D scene.
 
